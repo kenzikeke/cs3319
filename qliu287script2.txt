@@ -3,7 +3,7 @@
 -- load infile
 USE qliu287assign2db
 SELECT * FROM product;
-LOAD DATA local INFILE 'loaddatafall2018.txt' INGORE INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+LOAD DATA local INFILE 'loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
 SELECT * FROM product;
 
 -- insert data into 4 tables
