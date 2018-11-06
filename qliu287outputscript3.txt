@@ -6,7 +6,6 @@ SELECT description FROM product
 description
 Bike
 Socks
-iphoneX
 Elbow pads
 Knee Pads
 Roller Blades
@@ -59,16 +58,16 @@ SELECT customer.lastName, product.description, purchased.number FROM customer,pr
 --------------
 
 lastName	description	number
-Griffens	Elbow pads	19
-Flintstone	Knee Pads	2
-Flintstone	Elbow pads	2
-Simpson	Helmet	20
 Simpson	Socks	14
-Simpson	Elbow pads	10
-Bob	Helmet	5
 Bob	Socks	5
-Bob	Knee Pads	5
+Simpson	Elbow pads	10
 Bob	Elbow pads	5
+Flintstone	Elbow pads	2
+Griffens	Elbow pads	19
+Bob	Knee Pads	5
+Flintstone	Knee Pads	2
+Simpson	Helmet	20
+Bob	Helmet	5
 --------------
 SELECT SUM(number) AS "Homer's Total Purchases" FROM purchased WHERE customerID IN(SELECT customerID FROM customer WHERE firstName='Homer')
 --------------
@@ -90,7 +89,6 @@ SELECT description, instock FROM product WHERE product.productID NOT IN (SELECT 
 
 description	instock
 Bike	200
-iphoneX	999
 Roller Blades	89
 --------------
 SELECT description, instock FROM product WHERE productID NOT IN( SELECT productID FROM purchased WHERE customerID IN( SELECT customerID FROM customer WHERE firstName="Fred" AND lastName="Flintstone"))
@@ -99,7 +97,6 @@ SELECT description, instock FROM product WHERE productID NOT IN( SELECT productI
 description	instock
 Bike	200
 Socks	100
-iphoneX	999
 Roller Blades	89
 Helmet	30
 --------------
@@ -119,11 +116,11 @@ SELECT SUM(number) AS "number of purchased" FROM purchased WHERE productID IN(SE
 number of purchased
 7
 --------------
-SELECT description FROM product WHERE productID IN (SELECT productID FROM purchased HAVING COUNT(productID)>3)
+SELECT description FROM product WHERE productID IN (SELECT productID FROM purchased GROUP BY productID HAVING COUNT(productID)>3)
 --------------
 
 description
-Socks
+Elbow pads
 --------------
 SELECT firstName, lastName FROM agent WHERE agentID IN(SELECT servedBy FROM customer WHERE customerID IN (SELECT customerID FROM purchased WHERE productID IN (SELECT productID FROM product WHERE description="Knee Pads")))
 --------------

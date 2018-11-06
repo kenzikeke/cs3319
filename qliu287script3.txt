@@ -28,6 +28,6 @@ SELECT agent.firstName, agent.lastName, customer.firstName,customer.lastName FRO
 -- 13
 SELECT SUM(number) AS "number of purchased" FROM purchased WHERE productID IN(SELECT productID FROM product WHERE product.description="Knee Pads");
 -- 14
-SELECT description FROM product WHERE productID IN (SELECT productID FROM purchased HAVING COUNT(productID)>3);
+SELECT description FROM product WHERE productID IN (SELECT productID FROM purchased GROUP BY productID HAVING COUNT(productID)>3);
 -- 15
 SELECT firstName, lastName FROM agent WHERE agentID IN(SELECT servedBy FROM customer WHERE customerID IN (SELECT customerID FROM purchased WHERE productID IN (SELECT productID FROM product WHERE description="Knee Pads")));
