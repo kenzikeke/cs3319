@@ -1,0 +1,67 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW DATABASES
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+qliu287assign2db
+--------------
+DROP DATABASE IF EXISTS qliu287assign2db
+--------------
+
+--------------
+CREATE DATABASE qliu287assign2db
+--------------
+
+--------------
+GRANT USAGE ON *.* TO 'ta'@'localhost'
+--------------
+
+--------------
+DROP USER 'ta'@'localhost'
+--------------
+
+--------------
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
+--------------
+
+--------------
+GRANT ALL PRIVILEGES ON qliu287assign2db.* TO 'ta'@'localhost'
+--------------
+
+--------------
+FLUSH PRIVILEGES
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+--------------
+CREATE TABLE product( productID CHAR(2) PRIMARY KEY NOT NULL, description VARCHAR(20) NOT NULL, cost FLOAT NOT NULL, instock INT NOT NULL)
+--------------
+
+--------------
+CREATE TABLE agent( agentID CHAR(2) PRIMARY KEY NOT NULL, firstName CHAR(30) NOT NULL, lastName CHAR(30) NOT NULL, city CHAR(15) NOT NULL, commissionPercent CHAR(3) NOT NULL)
+--------------
+
+--------------
+CREATE TABLE customer(customerID CHAR(2) PRIMARY KEY NOT NULL, firstName VARCHAR(30) NOT NULL, lastName VARCHAR(30) NOT NULL, city VARCHAR(15) NOT NULL, phone CHAR(8) NOT NULL, servedBy CHAR(2) NOT NULL, FOREIGN KEY(servedBy) REFERENCES agent(agentID))
+--------------
+
+--------------
+CREATE TABLE purchased(customerID CHAR(2) NOT NULL, productID CHAR(2) NOT NULL, number INT NOT NULL, FOREIGN KEY(customerID) REFERENCES customer(customerID),FOREIGN KEY(productID) REFERENCES product(productID))
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+Tables_in_qliu287assign2db
+agent
+customer
+product
+purchased

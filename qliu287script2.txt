@@ -34,17 +34,17 @@ INSERT INTO purchased VALUES ("15", "78","2");
 INSERT INTO purchased VALUES ("15", "66","2");
 INSERT INTO purchased VALUES ("14", "66","19");
 
---show datas for each table after insert
+-- show datas for each table after insert
 SELECT * FROM product;
 SELECT * FROM customer;
 SELECT * FROM agent;
 SELECT * FROM purchased;
 
---change name in customer
+-- change name in customer
 UPDATE customer SET firstName='Wonder', lastName='Woman' WHERE firstName='Super' AND lastName='Man';
 UPDATE purchased SET number='5' WHERE customerID in (SELECT customerID FROM customer WHERE firstName='Sideshow');
 UPDATE customer SET city='Boston' WHERE servedBy in(SELECT agentID FROM agent WHERE firstName='Regis');
 
---show changed table 
+-- show changed table 
 SELECT * FROM purchased;
 SELECT * FROM customer;
