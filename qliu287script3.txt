@@ -1,0 +1,33 @@
+--Qi Liu's file 3
+
+USE qliu287assign2db;
+--1
+SELECT description FROM product;
+--2
+SELECT DISTINCT city FROM customer;
+--3
+SELECT * FROM agent ORDER BY city;
+--4
+SELECT firstName, lastName FROM customer WHERE city='Springfield';
+--5
+SELECT lastName FROM customer WHERE servedBy in (SELECT agentID FROM agent WHERE firstName='Regis');
+--6
+SELECT description FROM product WHERE `description` LIKE '%Pad%' OR '%pad%';
+--7
+SELECT customer.lastName, product.description, purchased.number FROM customer,product,purchased WHERE customer.customerID = purchased.customerID AND product.productID = purchased.productID;
+--8
+SELECT SUM(number) AS "Homer's Total Purchases" FROM purchased WHERE customerID IN(SELECT customerID FROM customer WHERE firstName='Homer');
+--9
+SELECT customer.firstName,customer.lastName, SUM(number) AS quantity FROM  customer, purchased WHERE customer.customerID=purchased.customerID GROUP BY customer.firstName;
+--10
+SELECT description, instock FROM product WHERE product.productID NOT IN (SELECT productID FROM purchased);
+--11
+SELECT description, instock FROM product WHERE productID NOT IN( SELECT productID FROM purchased WHERE customerID IN( SELECT customerID FROM customer WHERE firstName="Fred" AND lastName="Flintstone"));
+--12
+SELECT agent.firstName, agent.lastName, customer.firstName,customer.lastName FROM agent, customer WHERE agent.city=customer.city;
+--13
+SELECT SUM(number) AS "number of purchased" FROM purchased WHERE productID IN(SELECT productID FROM product WHERE product.description="Knee Pads");
+--14
+SELECT description FROM product WHERE productID IN (SELECT productID FROM purchased HAVING COUNT(productID)>3);
+--15
+SELECT firstName, lastName FROM agent WHERE agentID IN(SELECT servedBy FROM customer WHERE customerID IN (SELECT customerID FROM purchased WHERE productID IN (SELECT productID FROM product WHERE description="Knee Pads")));

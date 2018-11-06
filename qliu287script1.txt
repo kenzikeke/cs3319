@@ -1,6 +1,6 @@
---Qi Liu 's file 1
+-- Qi Liu 's file 1
 
---build the database
+-- build the database
 SHOW DATABASES;
 DROP DATABASE IF EXISTS qliu287assign2db;
 CREATEDATABASE qliu287assign2db;
@@ -12,7 +12,7 @@ GRANT ALL PRIVILEGES ON qliu287assign2db.* TO 'ta'@'localhost';
 FLUSH PRIVILEGES;
 
 
---build tables
+-- build tables
 SHOW TABLES;
 CREATE TABLE product( productID CHAR(2) PRIMARY KEY NOT NULL, description VARCHAR(20) NOT NULL, cost FLOAT NOT NULL, instock INT NOT NULL);
 CREATE TABLE agent( agentID CHAR(2) PRIMARY KEY NOT NULL, firstName CHAR(30) NOT NULL, lastName CHAR(30) NOT NULL, city CHAR(15) NOT NULL, commissionPercent CHAR NOT NULL);
