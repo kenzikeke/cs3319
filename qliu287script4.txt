@@ -1,11 +1,11 @@
---Qi Liu's file 4
-
---show all data
+-- Qi Liu's file 4
+USE qliu287assign2db;
+-- show all data
 SELECT * FROM customer;
 SELECT * FROM agent;
 SELECT * FROM product;
 SELECT * FROM purchased;
---create view 
+-- create view 
 CREATE VIEW view AS 
 SELECT customer.firstName, customer.lastName,product.description, purchased.number,
 product.cost, product.cost * purchased.number AS totalCost FROM customer, product, purchased 
@@ -13,10 +13,10 @@ WHERE customer.customerID=purchased.customerID AND product.productID=purchased.p
 -- view
 SELECT * FROM view;
 SELECT * FROM view WHERE totalCost>100;
---DELETE
+-- DELETE
 SELECT * FROM product;
 DELETE FROM product WHERE description="iphonex";
 SELECT * FROM product;
 SELECT * FROM agent;
 DELETE FROM agent WHERE city="Springfield";
---the row for delete agent was not seleted because it is used as foreign key in other table.
+-- the row for delete agent was not seleted because it is used as foreign key in other table.

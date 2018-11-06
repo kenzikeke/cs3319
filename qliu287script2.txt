@@ -1,12 +1,12 @@
 -- Qi Liu's file2
 
---load infile
+-- load infile
 USE qliu287assign2db
 SELECT * FROM product;
 LOAD DATA local INFILE 'loaddatafall2018.txt' INGORE INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
 SELECT * FROM product;
 
---insert data into 4 tables
+-- insert data into 4 tables
 INSERT INTO product VALUES ("66","Elbow pads","14.25","120");
 INSERT INTO product VALUES ("39","iphoneX","9.9","999");
 INSERT INTO agent VALUES ("99","Hugh","Grant","Springfield","16");

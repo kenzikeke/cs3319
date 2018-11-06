@@ -3,7 +3,7 @@
 -- build the database
 SHOW DATABASES;
 DROP DATABASE IF EXISTS qliu287assign2db;
-CREATEDATABASE qliu287assign2db;
+CREATE DATABASE qliu287assign2db;
 USE qliu287assign2db;
 GRANT USAGE ON *.* TO 'ta'@'localhost';
 DROP USER 'ta'@'localhost';
